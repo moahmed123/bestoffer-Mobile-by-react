@@ -11,7 +11,7 @@ import fetch from 'node-fetch';
 // Get Data Filter Function . 
 export function GetDataFilter(){
     return(dispatch) => {
-        return fetch('http://bestoffer2.herokuapp.com/api/filter')
+        return fetch('http://bestoffer1.herokuapp.com/api/filter')
         .then(res => res.json())
         .then((result) =>{
             console.log(result);
@@ -31,7 +31,7 @@ export function ActionDataFilter(DataFilter){
  ** Sort By Change And Scroll Page To Git Data 
  **/
 export function GetDataMobile(Data){            
-    const URL = "http://bestoffer2.herokuapp.com/api/products?"+Data;
+    const URL = "http://bestoffer1.herokuapp.com/api/products?"+Data;
     return (dispatch) => {        
         return fetch(URL)
         .then(res => res.json())
@@ -66,7 +66,7 @@ export function ActionDataMobile(DataMobile){
 /**
  ** Function Use When Change Filter , Pagination And Sort By . To Update Data .
  **/
-export function onChangeFilter(lengthForInput,linkBrands,linkPrice,linkOperatSys,linkNameSite,x,y,offset){        
+export function onChangeFilter(lengthForInput,linkBrands,linkPrice,linkOperatSys,linkNameSite,x,y,offset,searchMob){        
         // Loop To Select Input     
         for (let i = 0; i < lengthForInput; i++){
             let selectInputChaked = document.querySelector('#filter-form')[i].checked,
@@ -94,12 +94,17 @@ export function onChangeFilter(lengthForInput,linkBrands,linkPrice,linkOperatSys
         // Select Value For Sortby                                                          
         let valSortBy = document.getElementById('sort-by-value').value;
         console.log(linkBrands);
+        // {Test Bug For Hattem }
+        if(offset == ''){
+            offset = 0;
+        }
         //Create Link Filter To Send To Api . 
-        let FilterUrl = 'brands=' + linkBrands + '&prices=' + linkPrice + '&offset=' + offset,
-            FinalUrl  = FilterUrl + '&os=' + linkOperatSys + '&sites=' + linkNameSite + '&sort=price&order=' + valSortBy;            
+        let FilterUrl   = 'brands=' + linkBrands + '&prices=' + linkPrice + '&offset=' + offset,
+            FilterUrlSc = FilterUrl + '&os=' + linkOperatSys + '&sites=' + linkNameSite + '&sort=price&order=' + valSortBy,          
+            FinalUrl    = FilterUrlSc + '&q=' + searchMob;            
         console.log(FinalUrl); 
         console.log('mohamedFitch');
-        const URL = "http://bestoffer2.herokuapp.com/api/products?" + FinalUrl;
+        const URL = "http://bestoffer1.herokuapp.com/api/products?" + FinalUrl;
         return (dispatch) => {        
             return fetch(URL)
             .then(res => res.json())

@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 // Import Box Mobile Data  To Show It 
 import BoxMobData from './boxProducts/BoxMobData';
 
-class MobileData extends Component{      
+class MobileData extends Component{           
     mapMobData(){
         if(!this.props.MobData){
             return <div> Loading ... </div>;
@@ -21,14 +21,14 @@ class MobileData extends Component{
         if(!this.props.MobData){
             return <div> Loading ... </div>;
         }         
-        const count = Math.ceil(this.props.MobData['_count'] / 20);              
+        const count = Math.ceil(this.props.MobData['_count'] / 20);                   
         return(
             <div>
                 <ul className= 'row'>                
                     {this.mapMobData()}                                        
-                </ul>                
-                <nav aria-label="Page navigation example text-center">
-                    <ul className="pagination justify-content-center" id='pagination'>                                                
+                </ul>                           
+                {/* <nav aria-label="Page navigation example text-center">
+                    <ul className="pagination justify-content-center" id='pagination'>                     
                         {Array.apply(null, Array(count)).map((item, i) =>{
                             return(
                                 <li key={i}>
@@ -43,16 +43,22 @@ class MobileData extends Component{
                                                      linkNameSite   = '',
                                                      x              = ',',
                                                      y;                                                     
-                                                     // Function When Filter Change
-                                                     //{this.onChangeFilter(lengthForInput,linkBrands,linkPrice,linkOperatSys,linkNameSite,x,y,offset)};                                                
+                                                     // Function When Filter Change                                                     
                                                      {this.props.onChangeFilter(lengthForInput,linkBrands,linkPrice,linkOperatSys,linkNameSite,x,y,offset)};
+                                                     // To Remove Class Active From All Link Pagination
+                                                     for(var ii = 0; ii < document.querySelectorAll(".Pagination-link").length; ii++){                                                                                                              
+                                                         // Loop For All Link Pagination 
+                                                        document.querySelectorAll(".Pagination-link")[ii].classList.remove('active');
+                                                     }
+                                                     // Add Class Active For LinkPagination Click It 
+                                                     valChecked.classList.add('active');                                                     
                                             }
-                                        }} value = {i * 20}>{i}</a>
+                                        }} value = {i * 20} className = 'Pagination-link'>{i}</a>
                                 </li>
-                            )
+                            )                            
                         })}
                     </ul>
-                </nav>                
+                </nav>                 */}
             </div>
         )
     }

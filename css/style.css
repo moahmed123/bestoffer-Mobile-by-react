@@ -141,6 +141,7 @@ body{
     height: 58px;
     padding-left: 15px;
     width: 387px;
+    color: #000;
 }
 .homepage .search_frm input[type=submit] {
     background: none repeat scroll 0 0 #2d90cd;
@@ -540,4 +541,9 @@ input[type="range"][multiple] {
 /** Pagination **/
 ul.pagination li:first-of-type{
     display: none;
+}
+ul.pagination li a.active{
+    background: #000;
+    color: #aaa;
+    font-weight: bold;
 }

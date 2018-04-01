@@ -6,11 +6,11 @@ import GroupingData from './GroupingData';
 
 class BoxMobData extends Component{
     firstMobDeals(){
-        if(!this.props.databox.sites){
+        if(!this.props.databox.deals){
             return <div>loading ...</div>;
         }
         //slice(0,1) Get First MobData For Index [0]
-        return this.props.databox.sites.slice(0,1).map((Firstdata, i)=>{
+        return this.props.databox.deals.slice(0,1).map((Firstdata, i)=>{
             return(
                 <div key={i}>
                     <FirstDeals data = {Firstdata} keyData={i}/>                    
@@ -19,11 +19,11 @@ class BoxMobData extends Component{
         })
     }
     getDataGrouping(){   
-        if(!this.props.databox.sites){
+        if(!this.props.databox.deals){
             return <div>loading ...</div>;
         }     
         //slice(1) to loop Start For Index [1] not [0]
-        return this.props.databox.sites.slice(1).map((dataG, i)=>{            
+        return this.props.databox.deals.slice(1).map((dataG, i)=>{            
             return(
                 <div key={i}>
                     <GroupingData data = {dataG} keyGrouping = {i}/>                    

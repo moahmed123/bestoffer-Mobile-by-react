@@ -24,10 +24,11 @@ class FilterData extends Component{
                 linkOperatSys  = '',
                 linkNameSite   = '',
                 offset         = '',
+                searchMob      = '',
                 x              = ',',
                 y;
             // Function When Filter Change 
-            {this.props.onChangeFilter(lengthForInput,linkBrands,linkPrice,linkOperatSys,linkNameSite,x,y,offset)};                
+            {this.props.onChangeFilter(lengthForInput,linkBrands,linkPrice,linkOperatSys,linkNameSite,x,y,offset,searchMob)};                
             //{this.onChangeFilter(lengthForInput,linkBrands,linkPrice,linkOperatSys,linkNameSite,x,y)};
         }); 
         // Event Listener To Sort By. 
@@ -38,10 +39,11 @@ class FilterData extends Component{
                 linkOperatSys  = '',
                 linkNameSite   = '',
                 offset         = '',
+                searchMob      = '',                
                 x              = ',',
                 y;
             // Function When Filter Change                 
-            {this.props.onChangeFilter(lengthForInput,linkBrands,linkPrice,linkOperatSys,linkNameSite,x,y,offset)};                
+            {this.props.onChangeFilter(lengthForInput,linkBrands,linkPrice,linkOperatSys,linkNameSite,x,y,offset,searchMob)};                
             //{this.onChangeFilter(lengthForInput,linkBrands,linkPrice,linkOperatSys,linkNameSite,x,y)};
         });                           
     }      
@@ -63,7 +65,7 @@ class FilterData extends Component{
         if(this.props.data){
             return(
                 <div>
-                    <FilterPrices  pricesData = {this.props.data['prices'][0]} />                    
+                    <FilterPrices  pricesData = {this.props.data['prices']} />                    
                 </div>
             );  
         }
