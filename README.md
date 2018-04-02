@@ -10,7 +10,7 @@ Requirements:
 To run the app locally:
 
 ```bash
-git clone https://github.com/mzabriskie/react-example.git
+git clone https://github.com/moahmed123/bestoffer-Mobile-by-react.git
 cd react-example
 start npm 
 open http://localhost:8080
