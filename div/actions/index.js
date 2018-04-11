@@ -31,7 +31,7 @@ export function ActionDataFilter(DataFilter){
  ** Sort By Change And Scroll Page To Git Data 
  **/
 export function GetDataMobile(Data){            
-    const URL = "http://bestoffer1.herokuapp.com/api/products?"+Data;
+    const URL = "http://bestoffer1.herokuapp.com/api/products?" + Data;
     return (dispatch) => {        
         return fetch(URL)
         .then(res => res.json())
@@ -40,23 +40,6 @@ export function GetDataMobile(Data){
         });
     }
 }
-/**
- ** scrollData Function Use When Scroll Page
- **/
-// export function scrollData(Data,oldData){            
-//     const URL = "http://bestoffer2.herokuapp.com/api/products?"+Data;
-//     return (dispatch) => {        
-//         return fetch(URL)
-//         .then(res => res.json())
-//         .then((result)=>{                 
-//             // const data = {results:oldData.concat(result)};
-//             const data = {results : oldData.concat(result['results'])};
-//             console.log('dgdg');
-//             console.log(data);                   
-//             dispatch(ActionDataMobile(data));
-//         });
-//     }
-// }
 export function ActionDataMobile(DataMobile){
     return{
         type: 'GET_DATA_MOBILE',
@@ -97,14 +80,17 @@ export function onChangeFilter(lengthForInput,linkBrands,linkPrice,linkOperatSys
         // {Test Bug For Hattem }
         if(offset == ''){
             offset = 0;
+        }else if(typeof(searchMob) == 'undefined'){
+            searchMob = '';
         }
+
         //Create Link Filter To Send To Api . 
         let FilterUrl   = 'brands=' + linkBrands + '&prices=' + linkPrice + '&offset=' + offset,
             FilterUrlSc = FilterUrl + '&os=' + linkOperatSys + '&sites=' + linkNameSite + '&sort=price&order=' + valSortBy,          
             FinalUrl    = FilterUrlSc + '&q=' + searchMob;            
         console.log(FinalUrl); 
         console.log('mohamedFitch');
-        const URL = "http://bestoffer1.herokuapp.com/api/products?" + FinalUrl;
+        const URL = "http://bestoffer1.herokuapp.com/api/products?" + FinalUrl;        
         return (dispatch) => {        
             return fetch(URL)
             .then(res => res.json())
@@ -115,3 +101,9 @@ export function onChangeFilter(lengthForInput,linkBrands,linkPrice,linkOperatSys
         }
          
 }   
+/**
+ ** Function Use When search to disable filter 
+ **/
+export function disableBrandsfun(){    
+    
+}

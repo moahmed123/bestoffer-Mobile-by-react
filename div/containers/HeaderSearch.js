@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import * as  actionCreatores from '../actions/index';
 import {connect} from 'react-redux';
+//import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 
 class HeaderSearch extends Component{
     SearchProducts(){
@@ -13,26 +14,27 @@ class HeaderSearch extends Component{
                     <div className='row'>
                         <div className="content text-center">                                     
                             <div className="search_frm">                                
-                                <input id='search-name-products' type="search"  placeholder="What type of work do you need?"/>
+                                <input id='search-name-products' type="search"  placeholder="What type of work do you need?"/>                                                                
                                 <a className='btn btn-success' onClick = {()=>{                                    
                                     let lengthForInput =  document.querySelector('#filter-form').length,                                                     
                                         linkBrands     = '',
                                         linkPrice      = '',
                                         linkOperatSys  = '',
                                         linkNameSite   = '',
-                                        offset         = '',
+                                        offset         = '',                                        
                                         x              = ',',
                                         y,
-                                        valueSearchProduct = document.getElementById("search-name-products").value;
-                                        console.log(valueSearchProduct);
+                                        valueSearchProduct = document.getElementById("search-name-products").value,
+                                        componentSearch    = document.getElementById("component-search");
                                     // Function When Filter Change                                                     
                                     {this.props.onChangeFilter(lengthForInput,linkBrands,linkPrice,linkOperatSys,linkNameSite,x,y,offset,valueSearchProduct)};                                    
-                                }}>click</a>                                
+                                    if(componentSearch != null){
+                                        componentSearch.classList.remove('hidden');// show Component for result .                                                                        
+                                    }                                    
+                                }}> Search </a>                                
                                 <span>
                                     <b>Offer:</b>
-                                    <a href="/explore/psd-to-html-30.html">Mobile</a>,
-                                    <a href="/explore/logo-design-10.html">TV</a>,
-                                    <a href="#">...</a>
+                                    <span>Mobile,</span><span>TV,</span><span>...</span>
                                 </span>
                             </div>
                         </div>

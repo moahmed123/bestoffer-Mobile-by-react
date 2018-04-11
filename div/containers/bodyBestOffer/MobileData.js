@@ -3,8 +3,31 @@ import * as  actionCreatores from '../../actions/index';
 import {connect} from 'react-redux';
 // Import Box Mobile Data  To Show It 
 import BoxMobData from './boxProducts/BoxMobData';
+// disable Filter Component
+import DisableBrands from '../disableFilter/DisableBrands';
 
-class MobileData extends Component{           
+class MobileData extends Component{      
+    changeForm(){        
+        // const lengthBrands  = document.querySelectorAll('#brand-disable input').length;              
+        // console.log(lengthBrands);
+        // {this.props.disableBrandsfun()}
+        // for( var des = 0; des < lengthBrands; des++) {
+        //     const nameOfBrands = document.querySelectorAll('#brand-disable input')[des].name, // nokia [1]
+        //         inputBrands  = document.querySelectorAll('#filter-form  input[name="brands"]'); // nokia [5]
+        //         console.log(nameOfBrands);
+        //         let offset         = '',
+        //             searchMob      = '',
+        //             lengthForInput =  document.querySelector('#filter-form').length,                                                     
+        //             linkBrands     = '',
+        //             linkPrice      = '',
+        //             linkOperatSys  = '',
+        //             linkNameSite   = '',
+        //             x              = ',',
+        //             y;  
+        //         {this.props.onChangeFilter(lengthForInput,linkBrands,linkPrice,linkOperatSys,linkNameSite,x,y,offset,searchMob)};
+        //         //document.getElementById(nameOfBrands).style.border = '2px solid #333';                      
+        //}   
+    }   
     mapMobData(){
         if(!this.props.MobData){
             return <div> Loading ... </div>;
@@ -17,17 +40,30 @@ class MobileData extends Component{
             );
         });
     }    
+    // disable Filter Brands 
+    disableFilter(){
+        if(!this.props.MobData){
+            return <div> Loading ... </div>
+        }
+        return(
+            <form id='brand-disable'>
+                <DisableBrands dataBrands = {this.props.MobData['filter']['brands']}/>                
+            </form>
+        )        
+    } 
+
     render(){
         if(!this.props.MobData){
             return <div> Loading ... </div>;
         }         
-        const count = Math.ceil(this.props.MobData['_count'] / 20);                   
+        const count = Math.ceil(this.props.MobData['count'] / 20);                   
         return(
             <div>
                 <ul className= 'row'>                
                     {this.mapMobData()}                                        
-                </ul>                           
-                {/* <nav aria-label="Page navigation example text-center">
+                </ul>
+                {this.disableFilter()}
+                <nav aria-label="Page navigation example text-center">
                     <ul className="pagination justify-content-center" id='pagination'>                     
                         {Array.apply(null, Array(count)).map((item, i) =>{
                             return(
@@ -58,7 +94,7 @@ class MobileData extends Component{
                             )                            
                         })}
                     </ul>
-                </nav>                 */}
+                </nav>
             </div>
         )
     }

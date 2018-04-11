@@ -107,12 +107,10 @@ class FilterData extends Component{
             {this.FilterOperatingSystem()}                
             <h4>SitesName</h4> 
             {this.FilterSitesName()}
-        </form>                            
-                  
+        </form>                                              
         );
     }
 }
-
 function mapStateToProps(state){
     return{
         data: state.filterData
